@@ -1,9 +1,22 @@
 <div class="contenedor detalle-personaje">
   <header>
-    <h1>{{nombrePersonaje}}</h1>
+    <h1>{{personaje.name}}</h1>
+    <a href ng-click="volverListadoPersonajes()">Volver al listado</a>
   </header>
   <section>
-
+    <div class="table">
+      <div class="row" ng-repeat="comic in personaje.comics.items">
+        <div class="id-column column">
+          {{comic.name}}
+        </div>
+        <div class="name-column column">
+          <a href ng-click="agregarComoFavorito(comic)">Agregar A Facorito</a>
+        </div>
+        <div class="detail-column column">
+          <a href ng-click="detallarComic(comic)">ver</a>
+        </div>
+      </div>
+    </div>
   </section>
   <footer></footer>
 

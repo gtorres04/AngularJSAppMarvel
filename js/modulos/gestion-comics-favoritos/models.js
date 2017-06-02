@@ -3,11 +3,11 @@ angular.module('gestion-comics-favoritos')
 	.service("modeloComicsFavoritos",["$http","$q","Constantes","Utileria",
 	function($http, $q, Constantes, Utileria){
 		/**
-		* Consulta por un patron de busqueda los personajes.
-		*/
-		this.consultarPersonaje = function(patronBusqueda){
+		 * Consulta por un patron de busqueda los personajes.
+		 */
+		this.consultarPersonajes = function(patronBusqueda){
 			var defered = $q.defer();
-      var promise = defered.promise;
+      		var promise = defered.promise;
 			var ts = Utileria.getFechaSistema();
 			var url = Utileria.addAutenticacionUrl(Constantes.urlPersonajes,ts);
 			if(patronBusqueda){
@@ -17,7 +17,24 @@ angular.module('gestion-comics-favoritos')
 			$http.get(url)
 				.success(function(data, status, headers, config) {
 					defered.resolve(data.data.results);
-					//listObjectPersonajes = data.data.results;
+				}).error(function(data, status, header, config) {
+					defered.reject(data);
+					console.log("status:"+status);
+					console.log("data:"+data);
+				});
+			return promise;
+		};
+		/**
+		 * Consulta el detalle de un comic.
+		 */
+		this.consultarComic = function(comic){
+			var defered = $q.defer();
+      		var promise = defered.promise;
+			var ts = Utileria.getFechaSistema();
+			var url = Utileria.addAutenticacionUrl(comic.resourceURI,ts);
+			$http.get(url)
+				.success(function(data, status, headers, config) {
+					defered.resolve(data.data.results[0]);
 				}).error(function(data, status, header, config) {
 					defered.reject(data);
 					console.log("status:"+status);

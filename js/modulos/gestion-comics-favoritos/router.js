@@ -5,18 +5,19 @@ angular.module('gestion-comics-favoritos').config(["$stateProvider", "$urlRouter
 			$urlRouterProvider.otherwise('/');
 			$stateProvider.state('consultarPersonajes', {
 				url : "/",
+				params:{patronBusqueda : null},
 				templateUrl : "consultarPersonajes.html",
 				controller : "consultarPersonajesController as findPersonajes"
 			})
 			.state('detallePersonaje', {
 				url : "/detallePersonaje/",
-				params:{personaje:null},
+				params:{personaje : null, patronBusqueda : null},
 				templateUrl : "detallePersonaje.html",
 				controller : "detallePersonajeController as detailPersonaje"
 			})
 			.state('detalleComic', {
 				url : "/detalleComic/",
-				params:{comic:null},
+				params:{comic : null, personaje : null},
 				templateUrl : "detalleComic.html",
 				controller : "detalleComicController as detailComic"
 			})
