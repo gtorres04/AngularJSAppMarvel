@@ -5,10 +5,22 @@ angular.module('gestion-comics-favoritos')
 				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "modeloComicsFavoritos",
 						function($scope, $log, $http, $state, $rootScope, $stateParams, modeloComicsFavoritos) {
 							$scope.listadoPersonajes;
+							
 							$scope.consultarPersonajes = function(){
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
 									$scope.listadoPersonajes = data;
+									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 5, $scope.maxSize = 5;
+									$scope.numPages = function () {
+										return Math.ceil($scope.listadoPersonajes.length / $scope.numPerPage);
+									};
+									
+									$scope.$watch('currentPage + numPerPage', function() {
+										var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+										, end = begin + $scope.numPerPage;
+										
+										$scope.filteredTodos = $scope.listadoPersonajes.slice(begin, end);
+									});
 								}).catch(function(err){
 									console.log(err);
 								});

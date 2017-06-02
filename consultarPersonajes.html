@@ -9,7 +9,7 @@
     <button type="button" name="button" ng-click="consultarPersonajes()">Consultar</button>
   </div>
   <div class="table">
-    <div class="row" ng-repeat="personaje in listadoPersonajes">
+    <div class="row" ng-repeat="personaje in filteredTodos">
       <div class="id-column column">
         {{personaje.id}}
       </div>
@@ -21,6 +21,9 @@
       </div>
     </div>
   </div>
+  <div data-pagination="" data-num-pages="numPages()" 
+      data-current-page="currentPage" data-max-size="maxSize"  
+      data-boundary-links="true"></div>
 
 </section>
 <footer>
