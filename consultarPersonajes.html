@@ -1,13 +1,18 @@
 <div class="contenedor consultar-personajes">
 <header>
-  <h1>Buscar personajes MARVEL</h1>
-  <a href ng-click="verFavoritos()">Ver favoritos</a>
+  <div id="logo-marvel">
+    <img  src="img/logo-marvel.png"/>
+  </div>
+  <div class="formulario">
+      <div>
+        <input ng-model="patronConsultar" required>
+        <a id="boton-buscar" type="button" name="button" ng-click="consultarPersonajes()">Consultar</a>
+      </div>
+  </div>
+  <!--<a href ng-click="verFavoritos()">Ver favoritos</a> -->
 </header>
 <section>
-  <div class="formulario">
-    <input ng-model="patronConsultar" required>
-    <button type="button" name="button" ng-click="consultarPersonajes()">Consultar</button>
-  </div>
+  
   <div class="table">
     <div class="row" ng-repeat="personaje in filteredTodos">
       <div class="id-column column">
