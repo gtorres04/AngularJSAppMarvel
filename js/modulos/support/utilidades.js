@@ -27,5 +27,8 @@ angular.module('gestion-comics-favoritos')
 			hash = CryptoJS.MD5(hash);
 			url += "&hash=" + hash;
 			return url;
+		},
+		getNumeroAleatorio : function(desde, hasta){
+			return Math.floor((Math.random() * hasta) + desde);
 		}
 	});

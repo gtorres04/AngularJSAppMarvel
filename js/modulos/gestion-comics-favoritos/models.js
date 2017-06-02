@@ -54,11 +54,27 @@ angular.module('gestion-comics-favoritos')
 				listaComicsFavoritos.push(comic);
 				$localStorage.listaFavoritos = listaComicsFavoritos;
 			}else{
-				alert("El comic ya existe como favorito");
+				return false;
 			}
-			
+			return true;
 		};
-
+		/**
+		 * Se seleccionan 3 comics aleatoriamente para agregarlos a favoritos.
+		 */
+		this.guardarTresComicsAleatorios = function(personajes){
+			var listaComicsFavoritos = $localStorage.listaFavoritos;
+			if(!listaComicsFavoritos){
+				$localStorage.listaFavoritos = new Array();
+				listaComicsFavoritos = $localStorage.listaFavoritos;
+				while(3>=listaComicsFavoritos.length){
+					var numeroAleatorioPersonaje = Utileria.getNumeroAleatorio(1,personajes.length);
+					var personaje = personajes[numeroAleatorioPersonaje];
+					var numeroAleatorioComic = Utileria.getNumeroAleatorio(1,personaje.comics.items.length);
+					var comic = personaje.comics.items[numeroAleatorioComic]
+					this.guardarComicFavorito(comic);
+				}
+			}
+		};
 		/**
 		 * valida si existe el comic en la lista de favoritos.
 		 */

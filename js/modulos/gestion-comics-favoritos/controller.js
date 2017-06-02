@@ -9,16 +9,15 @@ angular.module('gestion-comics-favoritos')
 							$scope.consultarPersonajes = function(){
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
+									modeloComicsFavoritos.guardarTresComicsAleatorios(data);
 									$scope.listadoPersonajes = data;
 									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 10, $scope.maxSize = 5;
 									$scope.numPages = function () {
 										return Math.ceil($scope.listadoPersonajes.length / $scope.numPerPage);
 									};
-									
 									$scope.$watch('currentPage + numPerPage', function() {
 										var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 										, end = begin + $scope.numPerPage;
-										
 										$scope.filteredTodos = $scope.listadoPersonajes.slice(begin, end);
 									});
 								}).catch(function(err){
@@ -46,7 +45,9 @@ angular.module('gestion-comics-favoritos')
 							var patronBusqueda = $stateParams.patronBusqueda;
 							
 							$scope.agregarComoFavorito = function(comic){
-								modeloComicsFavoritos.guardarComicFavorito(comic);
+								if(!modeloComicsFavoritos.guardarComicFavorito(comic)){
+									alert("Este comic ya existe en favoritos");
+								}
 							};
 							
 							$scope.isFavorito = function(comic){
