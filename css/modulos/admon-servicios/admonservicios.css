@@ -1,0 +1,23 @@
+a {
+	border: solid 1px #5c5e92;
+    padding: 4px;
+    background-color: #bbbbe0;
+    margin: 2px;
+    color: #333367;
+    margin-top: 2px;
+}
+
+th, td {
+	border: solid 1px black;
+    padding: 5px;
+    width: 25%;
+    height: 30px;
+}
+
+table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-color: grey;
+    margin-top: 10px;
+}

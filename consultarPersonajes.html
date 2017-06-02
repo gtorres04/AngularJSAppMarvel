@@ -1,0 +1,28 @@
+<div class="contenedor consultar-personajes">
+<header>
+  <h1>Buscar personajes MARVEL</h1>
+  <div class="formulario">
+    <input ng-model="patronConsultar" required>
+    <button type="button" name="button" ng-click="consultarPersonaje()">Consultar</button>
+  </div>
+</header>
+<section>
+  <div class="table">
+    <div class="row" ng-repeat="personaje in listadoPersonajes">
+      <div class="id-column column">
+        {{personaje.id}}
+      </div>
+      <div class="name-column column">
+        {{personaje.name}}
+      </div>
+      <div class="detail-column column">
+        <a href ng-click="detallarPersonaje(servicio)">ver</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+<footer>
+
+</footer>
+</div>
