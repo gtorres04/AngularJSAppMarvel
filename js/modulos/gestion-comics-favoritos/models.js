@@ -1,7 +1,7 @@
 'use strict';
 angular.module('gestion-comics-favoritos')
-	.service("modeloComicsFavoritos",["$http","$q","Constantes","Utileria",
-	function($http, $q, Constantes, Utileria){
+	.service("modeloComicsFavoritos",["$http","$q", "$localStorage","Constantes","Utileria",
+	function($http, $q, $localStorage, Constantes, Utileria){
 		/**
 		 * Consulta por un patron de busqueda los personajes.
 		 */
@@ -42,4 +42,35 @@ angular.module('gestion-comics-favoritos')
 				});
 			return promise;
 		};
+		/**
+		 * Agregar el comic a la lista de favoritos.
+		 */
+		this.guardarComicFavorito = function(comic){
+			var listaComicsFavoritos = $localStorage.listaFavoritos;
+			if(!listaComicsFavoritos){
+				listaComicsFavoritos = new Array();
+			}
+			if(!this.existeComicEnFavoritos(comic)){
+				listaComicsFavoritos.push(comic);
+				$localStorage.listaFavoritos = listaComicsFavoritos;
+			}else{
+				alert("El comic ya existe como favorito");
+			}
+			
+		};
+
+		/**
+		 * valida si existe el comic en la lista de favoritos.
+		 */
+		this.existeComicEnFavoritos = function(comic){
+			var listaComicsFavoritos = $localStorage.listaFavoritos;
+			if(listaComicsFavoritos){
+				for(var i = 0 ; i < listaComicsFavoritos.length ; i++){
+					if(listaComicsFavoritos[i].resourceURI===comic.resourceURI){
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 	}]);

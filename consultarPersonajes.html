@@ -1,12 +1,13 @@
 <div class="contenedor consultar-personajes">
 <header>
   <h1>Buscar personajes MARVEL</h1>
+  <a href ng-click="verFavoritos()">Ver favoritos</a>
+</header>
+<section>
   <div class="formulario">
     <input ng-model="patronConsultar" required>
     <button type="button" name="button" ng-click="consultarPersonajes()">Consultar</button>
   </div>
-</header>
-<section>
   <div class="table">
     <div class="row" ng-repeat="personaje in listadoPersonajes">
       <div class="id-column column">

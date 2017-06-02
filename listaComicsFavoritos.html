@@ -1,0 +1,22 @@
+<div class="contenedor lista-comics-favoritos">
+<header>
+  <h1>Lista de Comics favoritos</h1>
+  <a href ng-click="volverListadoPersonajes()">ir al Buscador</a>
+</header>
+<section>
+  <div class="table">
+    <div class="row" ng-repeat="comic in comicsFavoritos">
+      <div class="name-column column">
+        {{comic.name}}
+      </div>
+      <div class="detail-column column">
+        <a href ng-click="detallarComic(comic)">ver</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+<footer>
+
+</footer>
+</div>

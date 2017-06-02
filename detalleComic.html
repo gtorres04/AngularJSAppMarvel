@@ -1,7 +1,8 @@
 <div class="contenedor detalle-comic">
   <header>
     <h1>{{comic.title}}</h1>
-    <a href ng-click="volverPersonaje()">Volver al personaje</a>
+    <a href ng-show="!fromFavoritos" ng-click="volverPersonaje()">Volver al personaje</a>
+    <a href ng-show="fromFavoritos" ng-click="volverFavoritos()">Volver a Favoritos</a>
   </header>
   <section>
     <div class="table-detail">

@@ -10,7 +10,8 @@
           {{comic.name}}
         </div>
         <div class="name-column column">
-          <a href ng-click="agregarComoFavorito(comic)">Agregar A Facorito</a>
+          <a href ng-show="!isFavorito(comic)" ng-click="agregarComoFavorito(comic)">Agregar A Facorito</a>
+          <span ng-show="isFavorito(comic)">Agregado</span>
         </div>
         <div class="detail-column column">
           <a href ng-click="detallarComic(comic)">ver</a>
