@@ -66,12 +66,15 @@ angular.module('gestion-comics-favoritos')
 			if(!listaComicsFavoritos){
 				$localStorage.listaFavoritos = new Array();
 				listaComicsFavoritos = $localStorage.listaFavoritos;
-				while(3>=listaComicsFavoritos.length){
+				while(3 > listaComicsFavoritos.length){
 					var numeroAleatorioPersonaje = Utileria.getNumeroAleatorio(1,personajes.length);
-					var personaje = personajes[numeroAleatorioPersonaje];
-					var numeroAleatorioComic = Utileria.getNumeroAleatorio(1,personaje.comics.items.length);
-					var comic = personaje.comics.items[numeroAleatorioComic]
-					this.guardarComicFavorito(comic);
+					var personaje = personajes[numeroAleatorioPersonaje-1];
+					if(0 != personaje.comics.items.length){
+						var numeroAleatorioComic = Utileria.getNumeroAleatorio(1,personaje.comics.items.length);
+						var comic = personaje.comics.items[numeroAleatorioComic-1]
+						this.guardarComicFavorito(comic);
+					}
+					
 				}
 			}
 		};
