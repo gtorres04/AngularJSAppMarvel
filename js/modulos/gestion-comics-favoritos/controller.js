@@ -10,7 +10,7 @@ angular.module('gestion-comics-favoritos')
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
 									$scope.listadoPersonajes = data;
-									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 5, $scope.maxSize = 5;
+									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 10, $scope.maxSize = 5;
 									$scope.numPages = function () {
 										return Math.ceil($scope.listadoPersonajes.length / $scope.numPerPage);
 									};
