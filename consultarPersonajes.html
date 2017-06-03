@@ -1,18 +1,12 @@
-<div class="contenedor consultar-personajes">
 <header>
-  <div id="logo-marvel">
-    <img  src="img/logo-marvel.png"/>
-  </div>
+  <img id="logo-marvel"  src="img/logo-marvel.png"/>
   <div class="formulario">
-      <div>
-        <input ng-model="patronConsultar" required>
-        <a id="boton-buscar" type="button" name="button" ng-click="consultarPersonajes()">Consultar</a>
-      </div>
-  </div>
-  <!--<a href ng-click="verFavoritos()">Ver favoritos</a> -->
+    <input placeholder="Search character..." ng-model="patronConsultar" required>
+    <a id="boton-buscar" type="button" name="button" ng-click="consultarPersonajes()"><img id="img-boton-buscar"  src="img/search.png"/></a>
+  </div> 
 </header>
 <section>
-  
+
   <div class="table">
     <div class="row" ng-repeat="personaje in filteredTodos">
       <div class="id-column column">
@@ -34,4 +28,3 @@
 <footer>
 
 </footer>
-</div>

@@ -1,32 +1,36 @@
-.consultar-personajes header{
+header{
     background-color: #302A2A;
     height: 80px;
     padding-top: 10px;
-}
-#logo-marvel img{
-    height: 60px;
-    margin-left: 10px;
+    padding-left: 10px;
+    position: relative;
 }
 #logo-marvel{
-    display: inline-block;
-    width: 170px;
-}
-.consultar-personajes input{
-    border-radius: 3px;
-    border: 1px solid white;
-    height: 50px;
-    font-size: 1.7em;
-    padding-left: 5px;
-    margin-top: 5px;
+    height: 60px;
+    position: relative;
 }
 .formulario{
-    width: 78%;
+    position: absolute;
+    top: 16px;
+    left: 30%;
+    width: 500px;
+}
+.formulario * {
     display: inline-block;
 }
-.formulario div{
-    margin: 0 auto;
-    width: 50%;
+.formulario input{
+    font-size:  16pt;
+    border-radius: 3px 0px 0px 3px;
+    border: 1px solid #FFFFFF;
+    padding-left: 5px;
+    width: 90%;
 }
-#boton-buscar{
-
+.formulario input, #img-boton-buscar{
+    height: 50px;
+}
+#img-boton-buscar{
+    background-color:#FFFFFF; 
+    border-radius: 0px 3px 3px 0px;
+    margin-left: -4px;
+    margin-top: -5px;
 }
