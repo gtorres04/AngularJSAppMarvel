@@ -1,4 +1,4 @@
-<header>
+<header id="header-main">
   <img id="logo-marvel"  src="img/logo-marvel.png"/>
   <div class="formulario">
     <input placeholder="Search character..." ng-model="patronConsultar" required>
@@ -6,22 +6,20 @@
   </div> 
 </header>
 <section>
-
-  <div class="table">
-    <div class="row" ng-repeat="personaje in filteredTodos">
-      <div class="id-column column">
-        {{personaje.id}}
-      </div>
-      <div class="name-column column">
-        {{personaje.name}}
-      </div>
-      <div class="detail-column column">
-        <a href ng-click="detallarPersonaje(personaje)">ver</a>
-      </div>
+  <h2>Character</h2>
+  <div class="table-characters">
+    <div class="row-character" ng-repeat="personaje in filteredTodos">
+      <img class="foto-character"  src="img/character-anonimo.jpg"/>
+      <article>
+        <h4>{{personaje.name}}</h4>
+        <p>{{personaje.description}}</p>
+        <div class="boton-ver-mas">
+        <a href ng-click="detallarPersonaje(personaje)">VIEW MORE</a>
+        </div>
+      </article>
     </div>
   </div>
-  <div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" 
-      data-current-page="currentPage" data-max-size="maxSize"  
+  <div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize"  
       data-boundary-links="true"></div>
 
 </section>

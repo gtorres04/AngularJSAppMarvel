@@ -1,4 +1,4 @@
-header{
+#header-main{
     background-color: #302A2A;
     height: 80px;
     padding-top: 10px;
@@ -33,4 +33,76 @@ header{
     border-radius: 0px 3px 3px 0px;
     margin-left: -4px;
     margin-top: -5px;
+}
+
+/*Cabecera de la lista de personajes*/
+section, aside{
+    display: inline-block;
+}
+section{
+    width: 65%;
+    background-color: #F5F4F3;
+}
+aside{
+    width: 35%;
+    background-color: blue;
+    margin-left: -2px;
+}
+section h2{
+    background-image: url("../../../img/characters.png");
+    background-repeat: no-repeat;
+    padding-left: 33px;
+    height: 40px;
+    padding-top: 5px
+}
+
+/* Recuadro de cada personaje */
+.table-characters{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+.row-character{
+    width: 40%;
+    background-color: white;
+    margin: 20px;
+}
+
+.foto-character{
+    border-radius:50%;
+    height: 110px;
+    float: left;
+    margin-right: 10px;
+    margin-top: -23px;
+    margin-left: -14px;
+    box-shadow: 3px 3px 3px 1px grey;
+}
+
+.row-character a{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: 8pt;
+    right: 5px;
+    margin-bottom: 20px;
+    float: right;
+    margin-right: 20px;
+}
+.boton-ver-mas{
+    overflow: hidden;
+}
+.pagination li{
+    display: inline;
+}
+.pagination{
+    float: right;
+    margin-right: 20%;
+}
+.pagination a{
+    display: inline;
+    box-shadow: 0px 1px 6px 0px grey;
+    padding: 5px;
+    margin-right: 5px;
+    color: gray;
 }
