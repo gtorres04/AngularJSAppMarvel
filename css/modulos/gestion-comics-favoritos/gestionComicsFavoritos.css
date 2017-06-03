@@ -36,18 +36,7 @@
 }
 
 /*Cabecera de la lista de personajes*/
-section, aside{
-    display: inline-block;
-}
-section{
-    width: 65%;
-    background-color: #F5F4F3;
-}
-aside{
-    width: 35%;
-    background-color: blue;
-    margin-left: -2px;
-}
+
 section h2{
     background-image: url("../../../img/characters.png");
     background-repeat: no-repeat;
@@ -56,8 +45,8 @@ section h2{
     padding-top: 5px
 }
 
-/* Recuadro de cada personaje */
-.table-characters{
+/* Division principal (contenido y favoritos) y Recuadro de cada personaje */
+.table-characters, .container-main{
     display: flex;
     display: -webkit-flex;
     flex-flow: row;
@@ -78,7 +67,9 @@ section h2{
     margin-left: -14px;
     box-shadow: 3px 3px 3px 1px grey;
 }
-
+.row-character h4{
+    margin-top: -10px;
+}
 .row-character a{
     background-color: red;
     color: white;
@@ -105,4 +96,12 @@ section h2{
     padding: 5px;
     margin-right: 5px;
     color: gray;
+}
+.container-main .section{
+    width: 65%;
+    background-color: #F5F4F3;
+}
+.container-main .aside{
+    width: 35%;
+    background-color: #EDEBE9;
 }
