@@ -9,6 +9,7 @@ angular.module('gestion-comics-favoritos')
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
 									modeloComicsFavoritos.guardarTresComicsAleatorios(data);
+									$scope.comicsFavoritos = $localStorage.listaFavoritos;
 									$scope.listadoPersonajes = data;
 									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 10, $scope.maxSize = 5;
 									$scope.numPages = function () {
