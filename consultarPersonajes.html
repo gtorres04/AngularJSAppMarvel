@@ -7,30 +7,49 @@
 </header>
 <div class="container-main">
   <div class="section">
-<section>
-  <h2>Character</h2>
-  <div class="table-characters">
-    <div class="row-character" ng-repeat="personaje in filteredTodos">
-      <img class="foto-character"  src="img/character-anonimo.jpg"/>
-      <article>
-        <h4>{{personaje.name}}</h4>
-        <p>{{personaje.description}}</p>
-        <div class="boton-ver-mas">
-        <a href ng-click="detallarPersonaje(personaje)">VIEW MORE</a>
+    <section>
+      <h2>Character</h2>
+      <div class="table-characters">
+        <div class="row-character" ng-repeat="personaje in filteredTodos">
+          <img class="foto-character"  src="img/character-anonimo.jpg"/>
+          <article>
+            <h4>{{personaje.name}}</h4>
+            <p>{{personaje.description}}</p>
+            <div class="boton-ver-mas">
+            <a href ng-click="detallarPersonaje(personaje)">VIEW MORE</a>
+            </div>
+          </article>
         </div>
-      </article>
-    </div>
+      </div>
+      <div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize"  
+          data-boundary-links="true"></div>
+    </section>
   </div>
-  <div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize"  
-      data-boundary-links="true"></div>
-
-</section>
-</div>
-<div class="aside">
-<aside>
-
-</aside>
-</div>
+  <div class="lista-comics-favoritos">
+  <aside>
+    <section>
+      <h2>My Favourites</h2>
+      <div class="table-comic">
+        <div class="row-comic" ng-repeat="comic in comicsFavoritos">
+          <div class="contenedor-portada">
+            <div class="portada-comic">
+              <a class="portada" href ng-click="detallarComic(comic)">
+                <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
+              </a>
+              <a class="eliminar-comic-favoritos" href>
+                <img class="img-eliminar"  src="img/btn-delete.png"/>
+              </a>
+              <label>IMAGE NOT FOUND</label>
+            </div>
+          </div>
+          <p>
+            {{comic.name}}
+          </p>
+        </div>
+      </div>
+    </section>
+  </aside>
+  </div>
 </div>
 <footer>
 

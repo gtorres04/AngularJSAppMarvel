@@ -2,10 +2,9 @@
 
 angular.module('gestion-comics-favoritos')
 	.controller('consultarPersonajesController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, modeloComicsFavoritos) {
+				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "$localStorage", "modeloComicsFavoritos",
+						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, modeloComicsFavoritos) {
 							$scope.listadoPersonajes;
-							
 							$scope.consultarPersonajes = function(){
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
@@ -37,6 +36,13 @@ angular.module('gestion-comics-favoritos')
 								$scope.patronConsultar = $stateParams.patronBusqueda;
 								$scope.consultarPersonajes();
 							}
+							$scope.comicsFavoritos = $localStorage.listaFavoritos;
+							$scope.detallarComic = function(comic){
+								$state.go('detalleComic', {
+									comic : comic,
+									personaje: null
+								});
+							};
 						} ])
 	.controller('detallePersonajeController',
 				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams","$localStorage", "modeloComicsFavoritos",

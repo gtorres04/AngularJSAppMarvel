@@ -36,13 +36,19 @@
 }
 
 /*Cabecera de la lista de personajes*/
-
 section h2{
-    background-image: url("../../../img/characters.png");
     background-repeat: no-repeat;
-    padding-left: 33px;
+    padding-left: 45px;
     height: 40px;
-    padding-top: 5px
+    padding-top: 5px;
+    margin-left: 5px;
+}
+.section section h2{
+    background-image: url("../../../img/characters.png");
+}
+.lista-comics-favoritos section h2{
+    background-image: url("../../../img/favourites.png");
+    margin-bottom: 40px;
 }
 
 /* Division principal (contenido y favoritos) y Recuadro de cada personaje */
@@ -69,6 +75,11 @@ section h2{
 }
 .row-character h4{
     margin-top: -10px;
+}
+.row-character p{
+    margin-left:3%;
+    margin-right: 3%;
+    text-align: justify; 
 }
 .row-character a{
     background-color: red;
@@ -98,10 +109,54 @@ section h2{
     color: gray;
 }
 .container-main .section{
-    width: 65%;
+    width: 75%;
     background-color: #F5F4F3;
 }
-.container-main .aside{
-    width: 35%;
+.container-main .lista-comics-favoritos{
+    width: 25%;
     background-color: #EDEBE9;
+}
+
+/* listado de comics favoritos*/
+.lista-comics-favoritos p{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.portada-comic{
+    display: inline-block;
+    position: relative;
+    margin-bottom: 6px
+}
+.lista-comics-favoritos img.foto-comic{
+    width: 100%;
+    box-shadow: 0px 1px 6px 0px grey;
+    -webkit-filter: blur(2px);
+    filter: blur(5px);
+    z-index: -1;
+}
+.eliminar-comic-favoritos{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 6px 0px white;
+}
+.portada-comic .portada{
+    display: inline-block;
+    position: relative;
+}
+.portada-comic label{
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 60px;
+    width: 50%;
+    text-align: center;
+    right: 25%;
+    text-shadow: 2px 2px black;
+}
+.contenedor-portada{
+    margin: 0 auto;
+    width: 60%;
 }
