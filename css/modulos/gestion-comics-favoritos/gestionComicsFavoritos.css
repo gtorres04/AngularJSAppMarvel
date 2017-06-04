@@ -243,3 +243,18 @@ section h2{
     top: -14px;
     right: 7px;
 }
+
+footer{
+    background-color: #302A2A;
+    height: 80px;
+    overflow: hidden;
+    padding: 17px 15%;
+}
+footer h6{
+    color: white;
+    float: left;
+    margin-top: 19px;
+}
+footer img{
+    float: right;
+}
