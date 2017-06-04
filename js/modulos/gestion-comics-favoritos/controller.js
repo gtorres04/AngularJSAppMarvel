@@ -5,28 +5,37 @@ angular.module('gestion-comics-favoritos')
 				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "$localStorage","$uibModal",  "modeloComicsFavoritos",
 						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, $uibModal, modeloComicsFavoritos) {
 							$scope.listadoPersonajes;
+							$scope.registrosEncontrados=false;
 							$scope.consultarPersonajes = function(){
+								$scope.filteredTodos=undefined;
+								$scope.consultandoPersonajes=true;
+								$scope.registrosEncontrados=false;
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
-									modeloComicsFavoritos.guardarTresComicsAleatorios(data)
-									.then(function(data){
+									$scope.consultandoPersonajes=false;
+									if(0 == data.length){
+										$scope.registrosEncontrados=true;
+									}else{
+										modeloComicsFavoritos.guardarTresComicsAleatorios(data)
+										.then(function(data){
+											$scope.comicsFavoritos = $localStorage.listaFavoritos;
+										})
+										.catch(function(err){
+											console.log(err);
+										});
 										$scope.comicsFavoritos = $localStorage.listaFavoritos;
-									})
-									.catch(function(err){
-										console.log(err);
-									});
-									$scope.comicsFavoritos = $localStorage.listaFavoritos;
-									$scope.listadoPersonajes = data;
-
-									$scope.filteredTodos = []
-									$scope.totalItems = $scope.listadoPersonajes.length;
-									$scope.currentPage = 1;
-									$scope.numPerPage = 10;
-									$scope.$watch('currentPage + numPerPage', function() {
-										var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-										, end = begin + $scope.numPerPage;
-										$scope.filteredTodos = $scope.listadoPersonajes.slice(begin, end);
-									});
+										$scope.listadoPersonajes = data;
+										$scope.filteredTodos = []
+										$scope.totalItems = $scope.listadoPersonajes.length;
+										$scope.currentPage = 1;
+										$scope.numPerPage = 10;
+										$scope.$watch('currentPage + numPerPage', function() {
+											var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+											, end = begin + $scope.numPerPage;
+											$scope.filteredTodos = $scope.listadoPersonajes.slice(begin, end);
+										});
+									}
+									
 								}).catch(function(err){
 									console.log(err);
 								});
@@ -72,9 +81,17 @@ angular.module('gestion-comics-favoritos')
 				["$scope", "$log", "$http", "$state", "$rootScope", "$stateParams","$localStorage", "$uibModal", "modeloComicsFavoritos",
 						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, $uibModal, modeloComicsFavoritos) {
 							$scope.personaje = $stateParams.personaje;
+							$scope.consultandoPersonajes=true;
+							$scope.registrosEncontrados=false;
 							modeloComicsFavoritos.consultarComicsByCharacter($scope.personaje)
 							.then(function(data){
-								$scope.comics = data;
+								$scope.consultandoPersonajes=false;
+								if(0 == data.length){
+									$scope.registrosEncontrados=true;
+								}else{
+									$scope.comics = data;
+								}
+								
 							}).catch(function(err){
 								console.log(err);
 							});

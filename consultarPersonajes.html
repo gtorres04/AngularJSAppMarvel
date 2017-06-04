@@ -9,6 +9,14 @@
   <div class="section">
     <section>
       <h2>Character</h2>
+      <div class="esperando" ng-show="consultandoPersonajes">
+        <img class="foto-reloj"  src="img/clock.svg"/>
+        <h5>Consultando...</h5>
+      </div>
+      <div class="no-registros" ng-show="registrosEncontrados">
+        <img class="foto-no-registro"  src="img/noregistro.svg"/>
+        <h5>Ningún registro encontrado</h5>
+      </div>
       <div class="table-characters">
         <div class="row-character" ng-repeat="personaje in filteredTodos">
           <img class="foto-character"  src="img/character-anonimo.jpg"/>

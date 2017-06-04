@@ -280,3 +280,12 @@ footer img{
     height: 50px;
     margin-left: 10px;
 }
+
+.esperando, .no-registros, .foto-no-registro{
+    width: 128px;
+    margin: 0 auto;
+}
+.esperando h5, .no-registros h5{
+    text-align: center;
+    font-weight: bold;
+}

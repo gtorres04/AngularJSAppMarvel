@@ -6,6 +6,14 @@
   <div class="section">
     <section>
       <h2>{{personaje.name}}'s Comics</h2>
+      <div class="esperando" ng-show="consultandoPersonajes">
+        <img class="foto-reloj"  src="img/clock.svg"/>
+        <h5>Consultando...</h5>
+      </div>
+      <div class="no-registros" ng-show="registrosEncontrados">
+        <img class="foto-no-registro"  src="img/noregistro.svg"/>
+        <h5>Ningún registro encontrado</h5>
+      </div>
       <div class="table-characters">
         <div class="row-character" ng-repeat="comic in comics">
           <img class="foto-character personaje-foto-comic"  src="img/comic-anonimo.jpg"/>
