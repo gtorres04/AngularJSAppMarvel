@@ -20,10 +20,5 @@ angular.module('gestion-comics-favoritos').config(["$stateProvider", "$urlRouter
 				params:{comic : null, personaje : null},
 				templateUrl : "detalleComic.html",
 				controller : "detalleComicController as detailComic"
-			})
-			.state('listaComicsFavoritos', {
-				url : "/listaComicsFavoritos/",
-				templateUrl : "listaComicsFavoritos.html",
-				controller : "listaComicsFavoritosController as listFavoriteComics"
 			});
 		}]);

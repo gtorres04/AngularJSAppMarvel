@@ -58,7 +58,7 @@ section h2{
     flex-flow: row;
     flex-wrap: wrap;
 }
-.row-character{
+.row-character, row-comic{
     width: 40%;
     background-color: white;
     margin: 20px;
@@ -145,6 +145,7 @@ section h2{
     display: inline-block;
     position: relative;
 }
+
 .portada-comic label{
     color: white;
     font-weight: bold;
@@ -155,7 +156,15 @@ section h2{
     right: 25%;
     text-shadow: 2px 2px black;
 }
+
 .contenedor-portada{
     margin: 0 auto;
     width: 60%;
 }
+
+/*Listado de comic del personajes*/
+.row-character .personaje-foto-comic{
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+}
+

@@ -8,7 +8,13 @@ angular.module('gestion-comics-favoritos')
 							$scope.consultarPersonajes = function(){
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
 								.then(function(data){
-									modeloComicsFavoritos.guardarTresComicsAleatorios(data);
+									modeloComicsFavoritos.guardarTresComicsAleatorios(data)
+									.then(function(data){
+										$scope.comicsFavoritos = $localStorage.listaFavoritos;
+									})
+									.catch(function(err){
+										console.log(err);
+									});
 									$scope.comicsFavoritos = $localStorage.listaFavoritos;
 									$scope.listadoPersonajes = data;
 									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 10, $scope.maxSize = 5;
@@ -49,6 +55,12 @@ angular.module('gestion-comics-favoritos')
 				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams","$localStorage", "modeloComicsFavoritos",
 						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, modeloComicsFavoritos) {
 							$scope.personaje = $stateParams.personaje;
+							modeloComicsFavoritos.consultarComicsByCharacter($scope.personaje)
+							.then(function(data){
+								$scope.comics = data;
+							}).catch(function(err){
+								console.log(err);
+							});
 							var patronBusqueda = $stateParams.patronBusqueda;
 							
 							$scope.agregarComoFavorito = function(comic){
@@ -69,6 +81,13 @@ angular.module('gestion-comics-favoritos')
 							$scope.volverListadoPersonajes = function(){
 								$state.go('consultarPersonajes', {
 									patronBusqueda : patronBusqueda
+								});
+							};
+							$scope.comicsFavoritos = $localStorage.listaFavoritos;
+							$scope.detallarComic = function(comic){
+								$state.go('detalleComic', {
+									comic : comic,
+									personaje: null
 								});
 							};
 						} ])
@@ -97,21 +116,5 @@ angular.module('gestion-comics-favoritos')
 							};
 							$scope.volverFavoritos = function(){
 								$state.go('listaComicsFavoritos');
-							};
-						} ])
-	.controller('listaComicsFavoritosController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "$localStorage",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage) {
-							$scope.comicsFavoritos = $localStorage.listaFavoritos;
-							$scope.detallarComic = function(comic){
-								$state.go('detalleComic', {
-									comic : comic,
-									personaje: null
-								});
-							};
-							$scope.volverListadoPersonajes = function(){
-								$state.go('consultarPersonajes', {
-									patronBusqueda : null
-								});
 							};
 						} ]);
