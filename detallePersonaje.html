@@ -16,7 +16,10 @@
       </div>
       <div class="table-characters">
         <div class="row-character" ng-repeat="comic in comics">
-          <img class="foto-character personaje-foto-comic"  src="img/comic-anonimo.jpg"/>
+          <div class="img-comic-listado">
+            <img class="foto-character personaje-foto-comic"  src="img/comic-anonimo.jpg"/>
+            <label>IMAGE NOT FOUND</label>
+          </div>
           <article>
             <h4>{{comic.title}}</h4>
             <p>{{comic.description}}</p>
@@ -63,6 +66,7 @@
         <div class="contenido-modal-comic">
           <div class="img-modal-comic">
             <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
+            <label>IMAGE NOT FOUND</label>
           </div>
           <div class="info-modal-comic">
             <h3>{{comic.title}}</h3>
