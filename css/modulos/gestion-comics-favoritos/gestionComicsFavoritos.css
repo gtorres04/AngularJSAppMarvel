@@ -163,8 +163,83 @@ section h2{
 }
 
 /*Listado de comic del personajes*/
+
 .row-character .personaje-foto-comic{
     -webkit-filter: blur(2px);
     filter: blur(2px);
 }
 
+.contenido-modal-comic{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.img-modal-comic{
+    width: 30%;
+}
+
+.img-modal-comic .foto-comic{
+    width: 100%;
+}
+
+.info-modal-comic{
+    width: 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info-modal-comic h3{
+    margin-top: 0px;
+}
+.modal-content{
+    border-radius: 0px;
+}
+.botones-modal-comic{
+    font-size: 1px;
+    letter-spacing: -1px;
+    /*width: 80%;*//*o lo necesario*/
+     margin: auto;
+}
+.botones-modal-comic a{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    background-repeat: no-repeat;
+    height: 60px;
+    word-spacing: normal;
+    font-size: 1.3rem;
+    letter-spacing: normal;
+    white-space: normal;
+    text-decoration: none;
+    padding-top: 23px;
+    background-position-y: 11px;
+    font-weight: bold;
+}
+.add-favourites, .add-favourites:visited{
+    background-image: url("../../../img/btn-favourites-default.png");
+    background-position-x: 13%;
+    color: black;
+    background-color: #F1F0EE;
+}
+.added-favourites, .added-favourites:visited{
+    background-image: url("../../../img/btn-favourites-primary.png");
+    background-position-x: 10%;
+    color: red;
+    background-color: black;
+}
+.buy-comic{
+    background-image: url("../../../img/shopping-cart-primary.png");
+    background-color: #E0DED9;
+    background-position-x: 20%;
+    color: red;
+}
+.modal-detalle-comic{
+    position: relative;
+}
+.close-modal-comic{
+    position: absolute;
+    top: -14px;
+    right: 7px;
+}

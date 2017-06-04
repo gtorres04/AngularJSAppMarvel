@@ -2,8 +2,8 @@
 
 angular.module('gestion-comics-favoritos')
 	.controller('consultarPersonajesController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "$localStorage", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, modeloComicsFavoritos) {
+				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "$localStorage","$uibModal",  "modeloComicsFavoritos",
+						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, $uibModal, modeloComicsFavoritos) {
 							$scope.listadoPersonajes;
 							$scope.consultarPersonajes = function(){
 								modeloComicsFavoritos.consultarPersonajes($scope.patronConsultar)
@@ -49,6 +49,22 @@ angular.module('gestion-comics-favoritos')
 								$state.go('detalleComic', {
 									comic : comic,
 									personaje: null
+								});
+							};
+							$scope.eliminarComicDeFavoritos = function(comic){
+								modeloComicsFavoritos.deleteComicFromListFavourites(comic);
+							}
+							/**
+							* abre la modal
+							*/
+							$scope.abrirModalDetalleComic = function (size, comic) {
+								var modalInstance = $uibModal.open({
+									templateUrl: 'detalle-comic',
+									controller: 'detalleComicController',
+									size: size,
+									resolve: {
+										Comic: comic
+									}
 								});
 							};
 						} ])
@@ -103,12 +119,19 @@ angular.module('gestion-comics-favoritos')
 							};
 						} ])
 	.controller('detalleComicController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "Comic", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, Comic, modeloComicsFavoritos) {
+				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams","$uibModalInstance", "Comic", "modeloComicsFavoritos",
+						function($scope, $log, $http, $state, $rootScope, $stateParams, $uibModalInstance, Comic, modeloComicsFavoritos) {
 							$scope.comic = Comic;
 							$scope.agregarComoFavorito = function(comic){
 								if(!modeloComicsFavoritos.guardarComicFavorito(comic)){
 									alert("Este comic ya existe en favoritos");
 								}
 							};
+							$scope.isFavorito = function(comic){
+								return modeloComicsFavoritos.existeComicEnFavoritos(comic);
+							};
+							$scope.cerrarModal = function(){
+								$uibModalInstance.close();
+							}
+							
 						} ]);

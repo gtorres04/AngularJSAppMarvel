@@ -21,9 +21,7 @@
           </article>
         </div>
       </div>
-      <ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-      <!--<div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize" 
-          data-boundary-links="true"></div>-->
+      <ul ng-show="filteredTodos" uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
     </section>
   </div>
   <div class="lista-comics-favoritos">
@@ -34,7 +32,7 @@
         <div class="row-comic" ng-repeat="comic in comicsFavoritos">
           <div class="contenedor-portada">
             <div class="portada-comic">
-              <a class="portada" href ng-click="detallarComic(comic)">
+              <a class="portada" href ng-click="abrirModalDetalleComic(undefined, comic)">
                 <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
               </a>
               <a class="eliminar-comic-favoritos" href ng-click="eliminarComicDeFavoritos(comic)">
@@ -52,4 +50,23 @@
   </aside>
   </div>
 </div>
+<!-- modal para mostrar los datos del comics -->
+<script type="text/ng-template" id="detalle-comic">
+    <div class="modal-detalle-comic">
+        <div class="contenido-modal-comic">
+          <div class="img-modal-comic">
+            <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
+          </div>
+          <div class="info-modal-comic">
+            <h3>{{comic.title}}</h3>
+            <p>{{comic.description}}</p>
+          </div>
+        </div>
+        <div class="botones-modal-comic">
+          <a class="{{isFavorito(comic) ? 'added-favourites' : 'add-favourites'}}" href ng-click="agregarComoFavorito(comic)">{{isFavorito(comic) ? 'ADDED TO FAVOURITES' : 'ADD TO FAVOURITES'}}</a>
+          <a class="buy-comic">BUY FOR ${{comic.prices[1].price}}</a>
+        </div>
+        <a href ng-click="cerrarModal()" class="close-modal-comic"><img class="foto-comic" src="img/btn-close.png"/></a>
+    </div>
+</script>
 

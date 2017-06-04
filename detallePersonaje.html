@@ -30,7 +30,7 @@
         <div class="row-comic" ng-repeat="comic in comicsFavoritos">
           <div class="contenedor-portada">
             <div class="portada-comic">
-              <a class="portada" href ng-click="detallarComic(comic)">
+              <a class="portada" href ng-click="abrirModalDetalleComic(undefined, comic)">
                 <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
               </a>
               <a href ng-click="eliminarComicDeFavoritos(comic)" class="eliminar-comic-favoritos" href>
@@ -61,8 +61,9 @@
           </div>
         </div>
         <div class="botones-modal-comic">
-          <a href ng-click="agregarComoFavorito(comic)">ADDED TO FAVOURITES</a>
-          <a>BUY FOR ${{comic.prices[1].price}}</a>
+          <a class="{{isFavorito(comic) ? 'added-favourites' : 'add-favourites'}}" href ng-click="agregarComoFavorito(comic)">{{isFavorito(comic) ? 'ADDED TO FAVOURITES' : 'ADD TO FAVOURITES'}}</a>
+          <a class="buy-comic">BUY FOR ${{comic.prices[1].price}}</a>
         </div>
+        <a href ng-click="cerrarModal()" class="close-modal-comic"><img class="foto-comic" src="img/btn-close.png"/></a>
     </div>
 </script>
