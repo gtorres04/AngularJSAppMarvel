@@ -17,10 +17,11 @@ angular.module('gestion-comics-favoritos')
 									});
 									$scope.comicsFavoritos = $localStorage.listaFavoritos;
 									$scope.listadoPersonajes = data;
-									$scope.filteredTodos = [], $scope.currentPage = 1, $scope.numPerPage = 10, $scope.maxSize = 5;
-									$scope.numPages = function () {
-										return Math.ceil($scope.listadoPersonajes.length / $scope.numPerPage);
-									};
+
+									$scope.filteredTodos = []
+									$scope.totalItems = $scope.listadoPersonajes.length;
+									$scope.currentPage = 1;
+									$scope.numPerPage = 10;
 									$scope.$watch('currentPage + numPerPage', function() {
 										var begin = (($scope.currentPage - 1) * $scope.numPerPage)
 										, end = begin + $scope.numPerPage;
@@ -52,8 +53,8 @@ angular.module('gestion-comics-favoritos')
 							};
 						} ])
 	.controller('detallePersonajeController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams","$localStorage", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, modeloComicsFavoritos) {
+				["$scope", "$log", "$http", "$state", "$rootScope", "$stateParams","$localStorage", "$uibModal", "modeloComicsFavoritos",
+						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, $uibModal, modeloComicsFavoritos) {
 							$scope.personaje = $stateParams.personaje;
 							modeloComicsFavoritos.consultarComicsByCharacter($scope.personaje)
 							.then(function(data){
@@ -84,17 +85,26 @@ angular.module('gestion-comics-favoritos')
 								});
 							};
 							$scope.comicsFavoritos = $localStorage.listaFavoritos;
-							$scope.detallarComic = function(comic){
-								$state.go('detalleComic', {
-									comic : comic,
-									personaje: null
+
+							/**
+							* abre la modal
+							*/
+							$scope.abrirModalDetalleComic = function (size, comic) {
+								var modalInstance = $uibModal.open({
+									templateUrl: 'detalle-comic',
+									controller: 'detalleComicController',
+									size: size,
+									resolve: {
+										Comic: comic
+									}
 								});
 							};
 						} ])
 	.controller('detalleComicController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, modeloComicsFavoritos) {
-							$scope.comic = $stateParams.comic;
+				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams", "Comic", "modeloComicsFavoritos",
+						function($scope, $log, $http, $state, $rootScope, $stateParams, Comic, modeloComicsFavoritos) {
+							$scope.comic = Comic;
+							/*$scope.comic = $stateParams.comic;
 							var personaje = $stateParams.personaje;
 							var fromFavoritos=false;
 							if(null == personaje){
@@ -116,5 +126,5 @@ angular.module('gestion-comics-favoritos')
 							};
 							$scope.volverFavoritos = function(){
 								$state.go('listaComicsFavoritos');
-							};
+							};*/
 						} ]);

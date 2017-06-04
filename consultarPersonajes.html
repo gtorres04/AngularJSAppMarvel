@@ -21,8 +21,9 @@
           </article>
         </div>
       </div>
-      <div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize" 
-          data-boundary-links="true"></div>
+      <ul uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+      <!--<div ng-show="filteredTodos" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize" 
+          data-boundary-links="true"></div>-->
     </section>
   </div>
   <div class="lista-comics-favoritos">
