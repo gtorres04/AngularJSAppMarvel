@@ -121,5 +121,20 @@ angular.module('gestion-comics-favoritos')
 				return Utileria.existeComicInArrayOfComics(listaComicsFavoritos, comic);
 			}
 			return false;
-		}
+		};
+
+		/**
+		 * Elimina un comic de la lista de favoritos.
+		 */
+		this.deleteComicFromListFavourites = function(comic){
+			var listaComicsFavoritos = $localStorage.listaFavoritos;
+			var positionElemento;
+			for(var i = 0 ; i < listaComicsFavoritos.length ; i++){
+				if(comic.id === listaComicsFavoritos[i].id){
+					listaComicsFavoritos.splice(i,1);
+					break;
+				}
+			}
+			$localStorage.listaFavoritos = listaComicsFavoritos;
+		};
 	}]);

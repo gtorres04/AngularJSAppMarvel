@@ -12,7 +12,7 @@
             <h4>{{comic.title}}</h4>
             <p>{{comic.description}}</p>
             <div class="boton-ver-mas">
-            <a href ng-click="abrirModalDetalleComic('sm', comic)">VIEW MORE</a>
+            <a href ng-click="abrirModalDetalleComic(undefined, comic)">VIEW MORE</a>
             <a ng-show="!isFavorito(comic)" href ng-click="agregarComoFavorito(comic)">ADD TO FAVOURITES</a>
             </div>
           </article>
@@ -33,7 +33,7 @@
               <a class="portada" href ng-click="detallarComic(comic)">
                 <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
               </a>
-              <a class="eliminar-comic-favoritos" href>
+              <a href ng-click="eliminarComicDeFavoritos(comic)" class="eliminar-comic-favoritos" href>
                 <img class="img-eliminar"  src="img/btn-delete.png"/>
               </a>
               <label>IMAGE NOT FOUND</label>
@@ -50,12 +50,19 @@
 </div>
 <!-- modal para mostrar los datos del comics -->
 <script type="text/ng-template" id="detalle-comic">
-    <div class="modal-header">
-        <h3 class="modal-title">Mi ventana modal</h3>
-    </div>
-    <div class="modal-body">
-        <div>
-          {{comic.title}}
+    <div class="modal-detalle-comic">
+        <div class="contenido-modal-comic">
+          <div class="img-modal-comic">
+            <img class="foto-comic"  src="img/comic-anonimo.jpg"/>
+          </div>
+          <div class="info-modal-comic">
+            <h3>{{comic.title}}</h3>
+            <p>{{comic.description}}</p>
+          </div>
+        </div>
+        <div class="botones-modal-comic">
+          <a href ng-click="agregarComoFavorito(comic)">ADDED TO FAVOURITES</a>
+          <a>BUY FOR ${{comic.prices[1].price}}</a>
         </div>
     </div>
 </script>
