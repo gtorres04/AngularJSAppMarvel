@@ -9,7 +9,7 @@ angular.module('gestion-comics-favoritos')
 			var defered = $q.defer();
       		var promise = defered.promise;
 			var ts = Utileria.getFechaSistema();
-			var url = Utileria.addAutenticacionUrl(Constantes.urlPersonajes,ts);
+			var url = Utileria.addAutenticacionUrl(Constantes.URL_SERVICIO_PERSONAJES,ts);
 			if(patronBusqueda){
 				url += "&nameStartsWith=" + patronBusqueda;
 			}

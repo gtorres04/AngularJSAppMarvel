@@ -2,7 +2,7 @@
 angular.module('gestion-comics-favoritos')
 	.value("Constantes",
 		{
-			"urlPersonajes": "https://gateway.marvel.com:443/v1/public/characters"
+			"URL_SERVICIO_PERSONAJES": "https://gateway.marvel.com:443/v1/public/characters"
 		})
 	.value("Utileria",
 	{
