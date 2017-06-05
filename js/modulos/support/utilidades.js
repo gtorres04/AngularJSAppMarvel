@@ -29,5 +29,10 @@ angular.module('gestion-comics-favoritos')
 				}
 			}
 			return false;
+		},
+		getObjectRandomFromListObjects : function(listObject){
+			var numeroAleatorioObject = Math.floor((Math.random() * listObject.length) + 1);
+			var object = listObject[numeroAleatorioObject - 1];
+			return object;
 		}
 	});
