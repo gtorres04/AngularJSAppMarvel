@@ -53,30 +53,6 @@ angular.module('gestion-comics-favoritos')
 		/**
 		 * Se seleccionan 3 comics aleatoriamente para agregarlos a favoritos.
 		 */
-		/*this.createThreeComicsFavouritesRandomFromListCharacters = function(personajes){
-			var defered = $q.defer();
-      var promise = defered.promise;
-			var cantidadAgregados = 0;
-			while(3 > cantidadAgregados){
-				var personaje = Utileria.getObjectRandomFromListObjects(personajes);
-				if(0 != personaje.comics.items.length){
-					this.createComicFavoriteRandomFromListComics(personaje.comics.items)
-						.then(function(data){
-							if(data){
-								cantidadAgregados++;
-							}
-							defered.resolve(data);
-						}).catch(function(err){
-							console.log(err);
-							defered.reject(err);
-						});
-				}
-			}
-			return promise;
-		};*/
-		/**
-		 * Se seleccionan 3 comics aleatoriamente para agregarlos a favoritos.
-		 */
 		this.createThreeComicsFavouritesRandomFromListCharacters = function(personajes){
 			var defered = $q.defer();
       var promise = defered.promise;
