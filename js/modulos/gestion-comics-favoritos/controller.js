@@ -78,12 +78,12 @@ angular.module('gestion-comics-favoritos')
 							};
 						} ])
 	.controller('detallePersonajeController',
-				["$scope", "$log", "$http", "$state", "$rootScope", "$stateParams","$localStorage", "$uibModal", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, $localStorage, $uibModal, modeloComicsFavoritos) {
+				["$scope", "$state", "$rootScope", "$stateParams", "$uibModal","ComicService","ComicFavoritoService",
+						function($scope, $state, $rootScope, $stateParams, $uibModal,ComicService,ComicFavoritoService) {
 							$scope.personaje = $stateParams.personaje;
 							$scope.consultandoPersonajes=true;
 							$scope.registrosEncontrados=false;
-							modeloComicsFavoritos.consultarComicsByCharacter($scope.personaje)
+							ComicService.findByCharacter($scope.personaje)
 							.then(function(data){
 								$scope.consultandoPersonajes=false;
 								if(0 == data.length){
@@ -91,20 +91,19 @@ angular.module('gestion-comics-favoritos')
 								}else{
 									$scope.comics = data;
 								}
-
 							}).catch(function(err){
 								console.log(err);
 							});
 							var patronBusqueda = $stateParams.patronBusqueda;
 
 							$scope.agregarComoFavorito = function(comic){
-								if(!modeloComicsFavoritos.guardarComicFavorito(comic)){
+								if(!ComicFavoritoService.create(comic)){
 									alert("Este comic ya existe en favoritos");
 								}
 							};
 
 							$scope.isFavorito = function(comic){
-								return modeloComicsFavoritos.existeComicEnFavoritos(comic);
+								return ComicFavoritoService.existsComicInFavourites(comic);
 							};
 							$scope.detallarComic = function(comic){
 								$state.go('detalleComic', {
@@ -117,9 +116,9 @@ angular.module('gestion-comics-favoritos')
 									patronBusqueda : patronBusqueda
 								});
 							};
-							$scope.comicsFavoritos = $localStorage.listaFavoritos;
+							$scope.comicsFavoritos = ComicFavoritoService.findAll();
 							$scope.eliminarComicDeFavoritos = function(comic){
-								modeloComicsFavoritos.deleteComicFromListFavourites(comic);
+								ComicFavoritoService.delete(comic);
 							}
 							/**
 							* abre la modal
@@ -136,16 +135,16 @@ angular.module('gestion-comics-favoritos')
 							};
 						} ])
 	.controller('detalleComicController',
-				["$scope", "$log", "$http", "$state",	"$rootScope", "$stateParams","$uibModalInstance", "Comic", "modeloComicsFavoritos",
-						function($scope, $log, $http, $state, $rootScope, $stateParams, $uibModalInstance, Comic, modeloComicsFavoritos) {
+				["$scope", "$state",	"$rootScope", "$stateParams","$uibModalInstance", "Comic","ComicFavoritoService",
+						function($scope, $state, $rootScope, $stateParams, $uibModalInstance, Comic,ComicFavoritoService) {
 							$scope.comic = Comic;
 							$scope.agregarComoFavorito = function(comic){
-								if(!modeloComicsFavoritos.guardarComicFavorito(comic)){
+								if(!ComicFavoritoService.create(comic)){
 									alert("Este comic ya existe en favoritos");
 								}
 							};
 							$scope.isFavorito = function(comic){
-								return modeloComicsFavoritos.existeComicEnFavoritos(comic);
+								return ComicFavoritoService.existsComicInFavourites(comic);
 							};
 							$scope.cerrarModal = function(){
 								$uibModalInstance.close();
