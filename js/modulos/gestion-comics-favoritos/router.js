@@ -14,11 +14,5 @@ angular.module('gestion-comics-favoritos').config(["$stateProvider", "$urlRouter
 				params:{personaje : null, patronBusqueda : null},
 				templateUrl : "detallePersonaje.html",
 				controller : "detallePersonajeController as detailPersonaje"
-			})
-			.state('detalleComic', {
-				url : "/detalleComic/",
-				params:{comic : null, personaje : null},
-				templateUrl : "detalleComic.html",
-				controller : "detalleComicController as detailComic"
 			});
 		}]);

@@ -54,12 +54,6 @@ angular.module('gestion-comics-favoritos')
 								$scope.consultarPersonajes();
 							}
 							$scope.comicsFavoritos = ComicFavoritoService.findAll();
-							$scope.detallarComic = function(comic){
-								$state.go('detalleComic', {
-									comic : comic,
-									personaje: null
-								});
-							};
 							$scope.eliminarComicDeFavoritos = function(comic){
 								ComicFavoritoService.delete(comic);
 							}
@@ -104,12 +98,6 @@ angular.module('gestion-comics-favoritos')
 
 							$scope.isFavorito = function(comic){
 								return ComicFavoritoService.existsComicInFavourites(comic);
-							};
-							$scope.detallarComic = function(comic){
-								$state.go('detalleComic', {
-									comic : comic,
-									personaje: $scope.personaje
-								});
 							};
 							$scope.volverListadoPersonajes = function(){
 								$state.go('consultarPersonajes', {
