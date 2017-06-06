@@ -29,7 +29,7 @@
     height: 50px;
 }
 #img-boton-buscar{
-    background-color:#FFFFFF; 
+    background-color:#FFFFFF;
     border-radius: 0px 3px 3px 0px;
     margin-left: -4px;
     margin-top: -5px;
@@ -44,10 +44,10 @@ section h2{
     margin-left: 5px;
 }
 .section section h2{
-    background-image: url("../../../img/characters.png");
+    background-image: url('../../../img/characters.png');
 }
 .lista-comics-favoritos section h2{
-    background-image: url("../../../img/favourites.png");
+    background-image: url('../../../img/favourites.png');
     margin-bottom: 40px;
 }
 
@@ -79,7 +79,7 @@ section h2{
 .row-character p{
     margin-left:3%;
     margin-right: 3%;
-    text-align: justify; 
+    text-align: justify;
 }
 .row-character a{
     background-color: red;
@@ -224,19 +224,19 @@ section h2{
     font-weight: bold;
 }
 .add-favourites, .add-favourites:visited{
-    background-image: url("../../../img/btn-favourites-default.png");
+    background-image: url('../../../img/btn-favourites-default.png');
     background-position-x: 13%;
     color: black;
     background-color: #F1F0EE;
 }
 .added-favourites, .added-favourites:visited{
-    background-image: url("../../../img/btn-favourites-primary.png");
+    background-image: url('../../../img/btn-favourites-primary.png');
     background-position-x: 10%;
     color: red;
     background-color: black;
 }
 .buy-comic{
-    background-image: url("../../../img/shopping-cart-primary.png");
+    background-image: url('../../../img/shopping-cart-primary.png');
     background-color: #E0DED9;
     background-position-x: 20%;
     color: red;
